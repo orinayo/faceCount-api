@@ -35,4 +35,4 @@ app.get('/profile/:id', (req, res) => profile.getUserProfile(req, res, db))
 app.put('/image', (req, res) => image.handleNewEntry(req, res, db))
 app.post('/imageurl', (req, res) => image.handleApiCall(req, res))
 
-app.listen(3001)
+app.listen(process.env.PORT || 3000)
