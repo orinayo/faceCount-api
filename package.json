@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devstart": "nodemon server.js"
+    "devstart": "nodemon -L server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,15 +16,13 @@
     "clarifai": "^2.8.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "knex": "^0.15.0",
-    "pg": "^7.4.3"
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.18.3"
   }
 }
