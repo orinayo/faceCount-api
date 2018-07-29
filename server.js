@@ -36,8 +36,19 @@ const db = knex({
 })
 
 const app = express()
+
+const whitelist = ['https://orin-facial-recognition.herokuapp.com/']
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    }
+    callback(new Error('Not allowed by CORS'))
+  }
+}
+
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(morgan('combined'))
 
 app.get('/', (req, res) => res.send('it works'))
