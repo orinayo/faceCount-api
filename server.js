@@ -11,28 +11,12 @@ const profile = require('./controllers/profile')
 const image = require('./controllers/image')
 const auth = require('./middleware/authorization')
 
-// For Production
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: true
-//   }
-// })
-
-// For Development
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     host: process.env.POSTGRES_HOST,
-//     user: process.env.POSTGRES_USER,
-//     password: process.env.POSTGRES_PASSWORD,
-//     database: process.env.POSTGRES_DB
-//   }
-// })
 const db = knex({
   client: 'pg',
-  connection: process.env.POSTGRES_URI
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  }
 })
 
 const app = express()
@@ -48,4 +32,4 @@ app.post('/profile/:id', auth.requireAuth, profile.handleProfileUpdate(db))
 app.put('/image', auth.requireAuth, image.handleNewEntry(db))
 app.post('/imageurl', auth.requireAuth, image.handleApiCall())
 
-app.listen(process.env.PORT || 3001)
+app.listen(process.env.PORT || 3000)
